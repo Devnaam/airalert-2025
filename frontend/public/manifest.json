@@ -1,0 +1,19 @@
+{
+  "name": "AirAlert Pro - NASA Space Apps 2025",
+  "short_name": "AirAlert Pro",
+  "description": "Air Quality Forecasting System using NASA TEMPO satellite data",
+  "theme_color": "#3B82F6",
+  "background_color": "#F9FAFB",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

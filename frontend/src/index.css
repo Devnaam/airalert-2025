@@ -1,0 +1,83 @@
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .aqi-card {
+    @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl;
+  }
+  
+  .aqi-good {
+    @apply border-l-4 border-aqi-good;
+  }
+  
+  .aqi-satisfactory {
+    @apply border-l-4 border-aqi-satisfactory;
+  }
+  
+  .aqi-moderate {
+    @apply border-l-4 border-aqi-moderate;
+  }
+  
+  .aqi-poor {
+    @apply border-l-4 border-aqi-poor;
+  }
+  
+  .aqi-very-poor {
+    @apply border-l-4 border-aqi-veryPoor;
+  }
+  
+  .aqi-severe {
+    @apply border-l-4 border-aqi-severe;
+  }
+}
+
+/* Custom styles for charts and maps */
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* Loading animations */
+.pulse-animation {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Alert animations */
+.alert-slide-in {
+  animation: slideInDown 0.5s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
