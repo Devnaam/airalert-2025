@@ -1,116 +1,151 @@
-import React from 'react';
-import { Satellite, Brain, Heart, Map, BarChart3, Shield } from 'lucide-react';
+import React from "react";
+import {
+  Satellite,
+  Brain,
+  Heart,
+  Map,
+  BarChart3,
+  Shield,
+} from "lucide-react";
 
 const FeaturesSection = () => {
   const features = [
     {
       icon: <Satellite className="w-8 h-8" />,
-      title: 'NASA TEMPO Integration',
-      description: 'Real-time atmospheric monitoring from geostationary orbit with hourly updates covering North America and extending to global coverage.',
-      color: 'text-primary-600',
-      bgColor: 'bg-primary-50',
-      borderColor: 'border-primary-200'
+      title: "NASA TEMPO Integration",
+      description:
+        "Harness real-time atmospheric data directly from NASA’s geostationary satellites to monitor air quality with precision.",
     },
     {
       icon: <Brain className="w-8 h-8" />,
-      title: 'AI-Powered Forecasting',
-      description: '24-hour air quality predictions using Random Forest algorithms trained on historical patterns and meteorological data.',
-      color: 'text-primary-700',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200'
+      title: "AI-Powered Forecasting",
+      description:
+        "Predict air quality levels 24 hours ahead using advanced machine learning models trained on global datasets.",
     },
     {
       icon: <Heart className="w-8 h-8" />,
-      title: 'Health-Focused Design',
-      description: 'Personalized recommendations for different user groups including sensitive populations, elderly, and children.',
-      color: 'text-primary-800',
-      bgColor: 'bg-slate-50',
-      borderColor: 'border-slate-200'
+      title: "Health Intelligence",
+      description:
+        "Get actionable health insights and recommendations tailored to your age, region, and sensitivity level.",
     },
     {
       icon: <Map className="w-8 h-8" />,
-      title: 'Interactive Mapping',
-      description: 'Real-time air quality visualization across Goa with location-specific data and geographic insights.',
-      color: 'text-primary-600',
-      bgColor: 'bg-primary-50',
-      borderColor: 'border-primary-200'
+      title: "Dynamic Geo Mapping",
+      description:
+        "Interact with a real-time 3D map that visualizes pollution intensity, hotspots, and air trends across Goa.",
     },
     {
       icon: <BarChart3 className="w-8 h-8" />,
-      title: 'Advanced Analytics',
-      description: 'Historical trend analysis, pattern recognition, and statistical insights for informed decision-making.',
-      color: 'text-primary-700',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200'
+      title: "Deep Data Analytics",
+      description:
+        "Dive into historical and comparative air quality data with intuitive graphs and smart insights.",
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: 'Real-time Alerts',
-      description: 'Intelligent alert system with customizable thresholds and multi-channel notifications for immediate response.',
-      color: 'text-primary-800',
-      bgColor: 'bg-slate-50',
-      borderColor: 'border-slate-200'
-    }
+      title: "Instant Alerts",
+      description:
+        "Get notified instantly when air quality reaches unsafe levels through smart adaptive alerting.",
+    },
   ];
 
   return (
-    <section id="features" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-4">
-            <span className="w-2 h-2 bg-primary-500 rounded-full mr-2"></span>
-            Platform Features
+    <section className="relative py-28 overflow-hidden">
+      {/* Animated Gradient Background */}
+      <div
+        className="absolute inset-0 -z-10 opacity-60"
+        style={{
+          background:
+            "linear-gradient(-45deg, #FFF5F2, #FFF1E6, #E8F6FF, #FFE9E0)",
+          backgroundSize: "400% 400%",
+          animation: "gradientShift 10s ease infinite",
+        }}
+      ></div>
+
+      <style>
+        {`
+          @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+
+          @keyframes floatUp {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+          }
+        `}
+      </style>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 text-center">
+        {/* Header Section */}
+        <div className="mb-20">
+          <div className="inline-flex items-center px-6 py-2 bg-[#FF7F50]/10 text-[#FF7F50] rounded-full text-sm font-semibold mb-5">
+            <span className="w-2 h-2 bg-[#FF7F50] rounded-full mr-2"></span>
+            Core Highlights
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6">
-            Built for{' '}
-            <span className="text-primary-600">
-              Excellence
-            </span>
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+            Experience the Future of{" "}
+            <span className="text-[#FF7F50]">Air Intelligence</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Our comprehensive air quality monitoring system combines cutting-edge technology 
-            with user-centered design to deliver actionable environmental insights.
+          <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            Every feature is designed with precision, innovation, and impact —
+            giving you deep visibility into your environment and empowering
+            informed decisions.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {features.map((feature, i) => (
             <div
-              key={index}
-              className={`group ${feature.bgColor} ${feature.borderColor} border-2 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2`}
+              key={i}
+              className="relative group p-[2px] rounded-3xl bg-gradient-to-r from-[#FF7F50]/30 via-white/50 to-[#FF7F50]/30 shadow-lg hover:shadow-2xl hover:scale-[1.03] transition-all duration-500"
             >
-              {/* Icon */}
-              <div className={`inline-flex items-center justify-center w-16 h-16 bg-primary-600 rounded-xl text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                {feature.icon}
-              </div>
+              {/* Card Content */}
+              <div className="relative bg-white/50 backdrop-blur-xl rounded-3xl p-8 h-full flex flex-col justify-start items-start hover:bg-white/70 transition-all duration-500">
+                {/* Floating Glow */}
+                <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#FF7F50]/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-[floatUp_5s_ease-in-out_infinite]"></div>
 
-              {/* Content */}
-              <h3 className={`text-xl font-bold ${feature.color} mb-4 group-hover:text-primary-700 transition-colors`}>
-                {feature.title}
-              </h3>
-              <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">
-                {feature.description}
-              </p>
+                {/* Icon */}
+                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#FF7F50] to-[#E56D3B] text-white shadow-xl mb-6 group-hover:rotate-6 transition-transform duration-500">
+                  {feature.icon}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-[#FF7F50] transition-colors duration-300">
+                  {feature.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-slate-700 leading-relaxed text-base group-hover:text-slate-800 transition-colors duration-300">
+                  {feature.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-6">
-            <div className="flex -space-x-2">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="w-10 h-10 bg-primary-100 border-2 border-white rounded-full flex items-center justify-center">
-                  <span className="text-primary-600 text-xs font-bold">👤</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-slate-600">
-              <span className="font-semibold text-slate-900">Join 1,000+</span> researchers and environmentalists
-            </p>
+        {/* Bottom Call to Action */}
+        <div className="mt-24 flex flex-col items-center justify-center space-y-6">
+          <div className="flex -space-x-3">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="w-10 h-10 bg-[#FF7F50]/20 border-2 border-white rounded-full flex items-center justify-center"
+              >
+                <span className="text-[#FF7F50] text-sm">👤</span>
+              </div>
+            ))}
           </div>
+
+          <p className="text-slate-700 text-base sm:text-lg">
+            <span className="font-semibold text-[#FF7F50]">Join 1,000+</span>{" "}
+            innovators building a cleaner, healthier tomorrow 🌍
+          </p>
+
+          <button className="mt-4 px-6 py-3 bg-gradient-to-r from-[#FF7F50] to-[#E56D3B] text-white font-medium rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500">
+            Get Started
+          </button>
         </div>
       </div>
     </section>
