@@ -9,59 +9,61 @@ const AppNavbar = () => {
   const { refreshData, loading } = useAirQualityContext();
 
   const navItems = [
-    { to: '/dashboard', icon: '📊', label: 'Dashboard' },
-    { to: '/forecast', icon: '📈', label: 'Forecast' },
-    { to: '/trends', icon: '📉', label: 'Trends' },
-    { to: '/alerts', icon: '🔔', label: 'Alerts' },
-    { to: '/health', icon: '❤️', label: 'Health' },
-    { to: '/about', icon: 'ℹ️', label: 'About' },
+    { to: '/dashboard', label: 'Dashboard' },
+    { to: '/forecast', label: 'Forecast' },
+    { to: '/trends', label: 'Trends' },
+    { to: '/alerts', label: 'Alerts' },
+    { to: '/health', label: 'Health' },
+    { to: '/about', label: 'About' },
   ];
 
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+    <nav className="bg-white/90 backdrop-blur-md border-b border-blue-100 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          
+          {/* Logo Section */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
-              <span className="text-white text-xl font-bold">🌬️</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center shadow-sm">
+              <span className="text-white text-xl font-bold">AQ</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-gray-900">AirAlert Pro</h1>
-              <p className="text-xs text-gray-500">NASA Space Apps 2025</p>
+              <h1 className="text-lg font-extrabold text-blue-700 tracking-tight">
+                AirAlert Pro
+              </h1>
+              <p className="text-xs text-blue-400 font-medium">NASA Space Apps 2025</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            {navItems.map(({ to, icon, label }) => (
+            {navItems.map(({ to, label }) => (
               <Link
                 key={to}
                 to={to}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   isActive(to)
                     ? 'bg-blue-100 text-blue-700'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                    : 'text-gray-600 hover:text-blue-700 hover:bg-blue-50'
                 }`}
               >
-                <span className="text-base">{icon}</span>
                 <span>{label}</span>
               </Link>
             ))}
           </div>
 
-          {/* Right Side Actions */}
-          <div className="flex items-center space-x-4">
+          {/* Right Actions */}
+          <div className="flex items-center space-x-3">
             {/* Refresh Button */}
             <button
               onClick={refreshData}
               disabled={loading}
-              className={`p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors ${
+              title="Refresh Data"
+              className={`p-2 rounded-lg transition-all duration-200 text-blue-600 hover:bg-blue-50 border border-blue-100 ${
                 loading ? 'animate-spin' : ''
               }`}
-              title="Refresh Data"
             >
               <RefreshCw className="w-5 h-5" />
             </button>
@@ -69,17 +71,17 @@ const AppNavbar = () => {
             {/* Home Button */}
             <Link
               to="/"
-              className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+              className="hidden sm:flex items-center space-x-2 px-4 py-2 border border-blue-100 text-blue-600 rounded-lg hover:bg-blue-50 transition-all duration-200 text-sm font-medium"
             >
               <Home className="w-4 h-4" />
-              <span className="text-sm font-medium">Home</span>
+              <span>Home</span>
             </Link>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Toggle */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-md text-gray-600 hover:bg-gray-100"
+                className="p-2 rounded-md text-blue-600 hover:bg-blue-50 transition-all duration-200"
               >
                 {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -87,32 +89,32 @@ const AppNavbar = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200 py-4">
+          <div className="md:hidden bg-white border-t border-blue-100 py-4 rounded-b-xl shadow-md">
             <div className="space-y-2">
-              {navItems.map(({ to, icon, label }) => (
+              {navItems.map(({ to, label }) => (
                 <Link
                   key={to}
                   to={to}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive(to)
                       ? 'bg-blue-100 text-blue-700'
-                      : 'text-gray-600 hover:bg-gray-100'
+                      : 'text-gray-700 hover:text-blue-700 hover:bg-blue-50'
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
                 >
-                  <span className="text-lg">{icon}</span>
                   <span>{label}</span>
                 </Link>
               ))}
-              
+
+              {/* Back to Home */}
               <Link
                 to="/"
-                className="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg text-sm font-medium"
                 onClick={() => setIsMenuOpen(false)}
+                className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg text-sm font-medium transition-all duration-200"
               >
-                <Home className="w-5 h-5" />
+                <Home className="w-5 h-5 text-blue-600" />
                 <span>Back to Home</span>
               </Link>
             </div>
