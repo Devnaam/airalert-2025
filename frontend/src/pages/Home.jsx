@@ -6,6 +6,7 @@ import LiveDataPreview from '../components/home/LiveDataPreview';
 import TechStack from '../components/home/TechStack';
 import CallToAction from '../components/home/CallToAction';
 import HomeNavbar from '../components/layout/HomeNavbar';
+import ChatWidget from '../components/chat/ChatWidget';
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -43,7 +44,7 @@ const Home = () => {
             {/* Brand */}
             <div className="col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
                   <span className="text-white text-xl font-bold">🌬️</span>
                 </div>
                 <div>
@@ -79,15 +80,38 @@ const Home = () => {
                 <li>Air Quality Forecasting</li>
               </ul>
             </div>
+
+            {/* AI Assistant Promo */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">AI Assistant</h4>
+              <div className="space-y-2 text-sm text-slate-400">
+                <p>🤖 Smart air quality advisor</p>
+                <p>🏥 Health recommendations</p>
+                <p>🌡️ Weather integration</p>
+                <p>📱 Available 24/7</p>
+                <div className="mt-4">
+                  <div className="flex items-center space-x-2 text-xs bg-blue-600/20 text-blue-300 px-3 py-2 rounded-lg">
+                    <span className="animate-pulse">💬</span>
+                    <span>Click the chat icon to start!</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           
           <div className="border-t border-slate-700 mt-8 pt-8 text-center">
             <p className="text-slate-400 text-sm">
               © 2025 AirAlert Pro - NASA Space Apps Challenge. Built with ❤️ for public health awareness.
             </p>
+            <p className="text-slate-500 text-xs mt-2">
+              Powered by NASA TEMPO • OpenAQ • Gemini AI • Made in Goa, India
+            </p>
           </div>
         </div>
       </footer>
+
+      {/* AI Chat Widget - Available on Home Page */}
+      <ChatWidget />
     </div>
   );
 };
