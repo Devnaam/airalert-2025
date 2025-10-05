@@ -160,20 +160,20 @@ const ChatWidget = () => {
 
   return (
     <>
-      {/* Floating Chat Icon */}
+      {/* Floating Chat Icon - Fixed positioning to avoid mobile nav */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hover:scale-110 z-50"
+          className="fixed bottom-20 right-6 lg:bottom-6 lg:right-6 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hover:scale-110 z-50"
         >
           <MessageCircle className="w-6 h-6 mx-auto" />
           <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse"></div>
         </button>
       )}
 
-      {/* Chat Window */}
+      {/* Chat Window - Adjusted positioning for mobile */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-80 h-96 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col z-50 sm:w-96 sm:h-[500px]">
+        <div className="fixed bottom-24 right-6 lg:bottom-6 lg:right-6 w-80 h-96 lg:w-96 lg:h-[500px] bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col z-50">
           {renderChatContent()}
         </div>
       )}

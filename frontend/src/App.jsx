@@ -49,7 +49,7 @@ function AppContent() {
           </div>
           
           {/* Main Content */}
-          <div className="flex-1">
+          <div className="flex-1 pb-20 lg:pb-0">
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/forecast" element={<Forecast />} />
@@ -61,9 +61,9 @@ function AppContent() {
           </div>
         </div>
 
-        {/* Mobile Navigation for App Pages */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 z-40">
-          <div className="flex justify-around">
+        {/* Mobile Navigation for App Pages - Proper Z-index */}
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 px-2 py-2 z-30 shadow-lg">
+          <div className="flex justify-around items-center">
             {[
               { to: '/dashboard', icon: '📊', label: 'Dashboard' },
               { to: '/forecast', icon: '📈', label: 'Forecast' },
@@ -74,16 +74,23 @@ function AppContent() {
               <a
                 key={to}
                 href={to}
-                className={`flex flex-col items-center space-y-1 py-2 px-3 rounded-lg text-xs font-medium transition-colors ${
+                className={`flex flex-col items-center space-y-1 py-2 px-2 rounded-lg text-xs font-medium transition-all duration-200 min-w-0 flex-1 ${
                   location.pathname === to
-                    ? 'text-blue-600 bg-blue-50'
+                    ? 'text-blue-600 bg-blue-50 scale-105'
                     : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
                 }`}
               >
                 <span className="text-lg">{icon}</span>
-                <span>{label}</span>
+                <span className="truncate max-w-full">{label}</span>
               </a>
             ))}
+          </div>
+          
+          {/* Chat Status Indicator in Mobile Nav */}
+          <div className="absolute -top-3 right-6">
+            <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center shadow-md">
+              <span className="text-white text-xs">💬</span>
+            </div>
           </div>
         </div>
       </div>
