@@ -7,6 +7,9 @@ import HomeNavbar from './components/layout/HomeNavbar';
 import AppNavbar from './components/layout/AppNavbar';
 import Navigation from './components/layout/Navigation';
 
+// Chat Component
+import ChatWidget from './components/chat/ChatWidget';
+
 // Pages
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -22,14 +25,20 @@ function AppContent() {
 
   // Home page has different layout
   if (isHomePage) {
-    return <Home />;
+    return (
+      <>
+        <Home />
+        {/* Chat Widget available on home page too */}
+        <ChatWidget />
+      </>
+    );
   }
 
   // App pages have sidebar + navbar layout
   return (
     <AirQualityProvider>
       <div className="min-h-screen bg-gray-50">
-        {/* App Navigation */}
+        {/* App Navigation - includes ChatWidget */}
         <AppNavbar />
         
         {/* Main Layout */}
@@ -53,7 +62,7 @@ function AppContent() {
         </div>
 
         {/* Mobile Navigation for App Pages */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 z-40">
           <div className="flex justify-around">
             {[
               { to: '/dashboard', icon: '📊', label: 'Dashboard' },
