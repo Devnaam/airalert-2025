@@ -1,4 +1,4 @@
-Backend is not deployed, if u could help me deploye msg me!
+Backend is not deployed, if u could help me deploy msg me!
 # 🌬️ AirAlert Pro - Advanced Air Quality Monitoring System
 
 ![AirAlert Pro Banner](https://img.shields.io/badge/NASA%20Space%20Apps-2025-blue?style=for-the-badge&logo=nasa)
